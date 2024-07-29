@@ -9,11 +9,13 @@ lerna-debug.log*
 
 node_modules
 # dist
+dist/
 dist-ssr
 *.local
 
 static/doom.jsdos
 static/pacman.jsdos
+package-lock.json
 
 # Editor directories and files
 .vscode/*
