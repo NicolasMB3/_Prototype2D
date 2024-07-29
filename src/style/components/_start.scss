@@ -1,0 +1,137 @@
+.start {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgb(0, 0, 0);
+  z-index: 8000;
+  display: flex;
+  padding: 2rem;
+  gap: 4rem;
+}
+
+.prototypeOS {
+  color: white;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.boot-gp {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.boot-controller {
+  width: 600px;
+  height: 450px;
+  background: #caced1;
+  border: 2px solid #000000;
+  box-shadow: 4px 4px 0 #808080;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.banner {
+  width: 100%;
+  font-family: 'Courier New', Courier, monospace;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #221db3;
+  color: white;
+  font-weight: bold;
+  box-shadow:
+    -1px -1px 0px #FFFFFF,
+    1px 1px 0px #000000,
+    2px 2px 0px #808080,
+    -2px -2px 0px #C0C0C0;
+}
+
+.menu-options {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0 20px;
+  align-items: center;
+}
+
+.btn-controller {
+  display: flex;
+  width: 100%;
+  height: 370px;
+
+  img {
+    border: 2px solid #000000;
+  }
+}
+
+.menu-button {
+  width: 100%;
+  padding: 10px;
+  cursor: pointer;
+  background: #ffffff;
+  border: 2px solid #000000;
+  font-family: 'Courier New', Courier, monospace;
+  box-shadow: 2px 2px 0 #808080;
+  text-align: left;
+}
+
+.menu-button:hover {
+  background: #c0c0c0;
+}
+
+#prototypeSEStartButton {
+  cursor: not-allowed;
+  color: white;
+}
+
+#loading-text {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.loading-screen {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: black;
+  color: lime;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Courier New', Courier, monospace;
+  z-index: 7000;
+}
+
+.blinking-cursor::after {
+  content: '_';
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.menu-button.active {
+  font-weight: bold;
+}

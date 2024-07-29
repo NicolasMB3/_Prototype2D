@@ -1,0 +1,65 @@
+.snake {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.main-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+  gap: .6rem;
+  button {
+    background-color: #2f3542;
+    border: none;
+    border-radius: 5px;
+    padding: .8rem;
+    width: 200px;
+    cursor: pointer;
+    color: white;
+    &:hover {
+      background-color: #545e70;
+    }
+  }
+}
+
+.color-container, .pause-container {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+
+  input {
+    margin-top: .3rem;
+    width: 200px;
+    height: 30px;
+  }
+}
+
+.controller-text {
+  margin-top: 1rem;
+}
+
+.snake-window .controller {
+  backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+
+  &:before {
+    opacity: 0.55;
+    content: '';
+    position: absolute;
+    top: -30px;
+    left: -100px;
+    width: 200px;
+    height: 200px;
+    filter: blur(55px);
+    background-color: var(--random-color);
+    border-radius: 500px;
+  }
+}
+
+.pause {
+  width: 64px;
+  height: 64px;
+}

@@ -1,0 +1,15 @@
+@use "./base/base";
+@use "./assets/CRT";
+
+@use "./components/desktop";
+@use "./components/dock";
+@use "./components/navigation";
+@use "./components/windows";
+@use "./components/notification";
+@use "./components/pages/params";
+@use "./components/popup";
+@use "./components/start";
+
+@use "./assets/context-menu";
+@use "./assets/animations";
+@use "./assets/snake";
