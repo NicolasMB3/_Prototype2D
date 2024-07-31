@@ -54,7 +54,7 @@ export default class Application {
         setTimeout(() => {
             this.startComputer();
             window.parent.postMessage('startPlaneClicked', '*');
-        }, 30000)
+        }, 3000000)
         // this.startComputer();
     }
 

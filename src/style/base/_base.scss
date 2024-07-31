@@ -16,10 +16,16 @@ html {
   font-weight: 400;
   font-style: normal;
 
+  cursor: url('/images/cursor-default.png'), auto;
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+a, button, input[type="button"], input[type="submit"], .desktop-folder, .items_dock {
+  cursor: url('/images/cursor-pointer.png'), auto !important;
 }
 
 .block_highlights {

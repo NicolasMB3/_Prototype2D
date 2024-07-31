@@ -41,7 +41,7 @@
 
 .banner {
   width: 100%;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Perfect DOS VGA 437 Win', 'Tahoma', sans-serif;
   height: 35px;
   display: flex;
   justify-content: center;
@@ -81,7 +81,7 @@
   cursor: pointer;
   background: #ffffff;
   border: 2px solid #000000;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Perfect DOS VGA 437 Win', 'Tahoma', sans-serif;
   box-shadow: 2px 2px 0 #808080;
   text-align: left;
 }
@@ -96,9 +96,11 @@
 }
 
 #loading-text {
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Perfect DOS VGA 437 Win', 'Tahoma', sans-serif;
   font-weight: 400;
   font-style: normal;
+  color: white;
+  font-size: 20px;
 }
 
 .loading-screen {
