@@ -1,0 +1,103 @@
+.windows_area {
+  width: 100%;
+  height: calc(100vh - 140px);
+}
+
+.fullScreen {
+  transition: width 0.3s, height 0.3s, top 0.3s, left 0.3s;
+}
+
+/* New Windows */
+
+.w-95-position-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 535px;
+
+  &_out {
+    position: absolute;
+    top: 76%;
+    left: 63%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 220px;
+    text-align: center;
+
+    .button-container {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      padding-bottom: 8px;
+    }
+  }
+
+  &_bottomleft {
+    position: absolute;
+    top: 40px;
+    left: 10px;
+    width: 280px;
+    text-align: center;
+
+    .button-container {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      padding-bottom: 8px;
+    }
+  }
+}
+
+.windows95-box {
+  height: auto;
+  background: #C0C0C0;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  border-top: 1px solid #DFDFDF;
+  border-left: 1px solid #DFDFDF;
+
+  box-shadow: inset 1px 1px 0px #FFFFFF,
+  inset -1px -1px 0px #667378;
+
+  padding: 2px;
+
+  .bold {
+    font-size: 14px;
+  }
+
+  .windows95-controller {
+    background-image: linear-gradient(to right, #000080, #002c9a, #004ab0, #0067c1, #1084d0);
+    display: flex;
+    justify-content: space-between;
+    padding: 3px;
+    color: white;
+    font-size: 14px;
+    line-height: 17px;
+    gap: 2rem;
+  }
+
+  .windows95-paragraph {
+    padding: 10px;
+    font-size: 15px;
+    line-height: 16.5px;
+  }
+
+  .windows95-btn-controller {
+    display: flex;
+    gap: 0.15rem;
+  }
+
+  .windows95-footer {
+    display: flex;
+    gap: 0.2rem;
+    padding: 4px;
+    div {
+      width: 50%;
+      height: 20px;
+      border-right: 1px solid #DFDFDF;
+      border-bottom: 1px solid #DFDFDF;
+      border-top: 1px solid #808080;
+      border-left: 1px solid #808080;
+    }
+  }
+}

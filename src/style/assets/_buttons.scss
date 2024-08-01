@@ -1,0 +1,44 @@
+.w-95-btn {
+  background: #B8C0C1;
+  cursor: pointer;
+  font-family: 'MS Sans Serif Bold';
+  font-weight: bold;
+  font-style: normal;
+  font-size: 12px;
+  padding: 0 6px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  height: 28px;
+  width: fit-content;
+  line-height: 15px;
+  color: black;
+
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  border-top: 1px solid #DFDFDF;
+  border-left: 1px solid #DFDFDF;
+
+  box-shadow: inset 1px 1px 0px #FFFFFF,
+  inset -1px -1px 0px #667378;
+
+  &:hover {
+    border-right: 1px solid #DFDFDF;
+    border-bottom: 1px solid #DFDFDF;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+
+    box-shadow: inset 1px 1px 0px #667378,
+    inset -1px -1px 0px #FFFFFF;
+  }
+
+  &_c {
+    width: 16px;
+    height: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

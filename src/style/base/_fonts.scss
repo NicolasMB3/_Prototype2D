@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'Perfect DOS VGA 437';
-  src: url('fonts/PerfectDOSVGA437.woff2') format('woff2'),
-  url('fonts/PerfectDOSVGA437.woff') format('woff');
+  src: url('/fonts/PerfectDOSVGA437.woff2') format('woff2'),
+  url('/fonts/PerfectDOSVGA437.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -9,16 +9,37 @@
 
 @font-face {
   font-family: 'Perfect DOS VGA 437 Win';
-  src: url('fonts/PerfectDOSVGA437Win.woff2') format('woff2'),
-  url('fonts/PerfectDOSVGA437Win.woff') format('woff');
+  src: url('/fonts/PerfectDOSVGA437Win.woff2') format('woff2'),
+  url('/fonts/PerfectDOSVGA437Win.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'MSSansSerif';
-  src: url('/fonts/MSSansSerif.ttf') format('truetype');
+  font-family: 'MS Sans Serif';
+  src: url('/fonts/MS-Sans-Serif.woff2') format('woff2'),
+  url('/fonts/MS-Sans-Serif.woff') format('woff'),
+  url('/fonts/MS-Sans-Serif.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'MS Sans Serif Bold';
+  src: url('/fonts/MS-Sans-Serif-Bold.woff2') format('woff2'),
+  url('/fonts/MS-Sans-Serif-Bold.woff') format('woff'),
+  url('/fonts/MS-Sans-Serif-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+.ms-font {
+    font-family: 'MS Sans Serif', 'Tahoma', sans-serif;
+}
+
+.msb-font {
+  font-family: 'MS Sans Serif Bold', 'Tahoma', sans-serif;
 }

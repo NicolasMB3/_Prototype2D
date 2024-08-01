@@ -48,7 +48,10 @@ export default class Application {
                 this.setupOffComputer();
             }
         }, false);
-        document.querySelector('#start').addEventListener('click', () => {
+        document.querySelector('#startW95').addEventListener('click', () => {
+            this.startComputer();
+        });
+        document.querySelector('#main-start').addEventListener('click', () => {
             this.startComputer();
         });
         setTimeout(() => {

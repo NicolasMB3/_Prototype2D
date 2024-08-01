@@ -21,18 +21,59 @@
   <body class="container">
     <!--  Start-->
     <div class="start">
-      <div class="boot-gp">
-        <div class="boot-controller">
-          <div class="banner">PrototypeOS Boot Menu</div>
-          <div class="btn-controller">
-            <img src="./images/boot.png" alt="Image décorative">
-            <div class="menu-options">
-              <p>Veuillez choisir une option parmi la liste. Si aucun choix n'est fait dans les 30 secondes, l'option Démarrer en mode sans échec sera automatiquement choisie.</p>
-              <button class="menu-button active" id="start">Démarrer en mode normal</button>
-              <button class="menu-button">Démarrer en mode sans échec</button>
-              <button class="menu-button">Options avancées</button>
-            </div>
+      <div class="menu-demarrer w-95-border">
+        <button class="w-95-btn" id="main-start">
+          <img src="./images/computer.png" alt="Logo Start">
+          Démarrer
+        </button>
+      </div>
+      <div class="windows95-box w-95-position-center w-95-border">
+        <div class="windows95-controller">
+          <p class="msb-font">Information avant démarrage</p>
+          <div class="windows95-btn-controller">
+            <button class="w-95-btn_c"><img src="./images/-.png" alt="Controller"></button>
+            <button class="w-95-btn_c"><img src="./images/_.png" alt="Controller"></button>
+            <button class="w-95-btn_c"><img src="./images/x.png" alt="Controller"></button>
           </div>
+        </div>
+        <p class="windows95-paragraph ms-font">Bienvenue sur PrototypeOS,</br></br>Je suis Nicolas, et avant de vous laisser plonger dans cet OS, laissez-moi vous raconter l’aventure qui m’a mené à écrire ce message.</br></br>Pendant plus de 4 mois, j’ai travaillé sur ce projet, et je peux vous dire que j’ai bu plus de café qu’un barista en plein rush. L’idée de recréer un système d'exploitation dans une scène 3D m'a poussé à explorer l’inconnu, à apprendre un nouveau framework, à améliorer mon code et à repousser les limites de ma créativité.</br></br>J’ai mis tout mon cœur et perdu quelques cheveux pour vous montrer mes compétences à travers les animations et interactions de PrototypeOS. J'espère qu'une entreprise saura voir le travail fourni et ma motivation à rejoindre une équipe.</br></br>J’espère également que le concept vous plaira autant que j’ai aimé le créer (même si parfois, j’ai eu envie de jeter mon ordinateur par la fenêtre).</br></br>Sans plus attendre, je vous laisse démarrer l’ordinateur en cliquant sur le bouton ci-dessous. Ne vous inquiétez pas, il n’explosera pas.</br></br>Merci beaucoup et un énorme merci à <a href="https://threejs-journey.com/" target="_blank" class="bold msb-font">@BrunoSimon</a> pour ses cours, qui m'ont énormément aidé à progresser.</p>
+        <div class="windows95-footer">
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+      <div class="windows95-box w-95-position-center_out w-95-border">
+        <div class="windows95-controller">
+          <p class="msb-font">Démarrage</p>
+          <div class="windows95-btn-controller">
+            <button class="w-95-btn_c"><img src="./images/-.png" alt="Controller"></button>
+            <button class="w-95-btn_c"><img src="./images/_.png" alt="Controller"></button>
+            <button class="w-95-btn_c"><img src="./images/x.png" alt="Controller"></button>
+          </div>
+        </div>
+        <p class="windows95-paragraph ms-font">Démarrer l'ordinateur ?</p>
+        <div class="button-container">
+          <button class="w-95-btn" id="startW95">
+            <img src="./images/computer.png" alt="Logo Start">
+            Démarrer
+          </button>
+        </div>
+      </div>
+      <div class="windows95-box w-95-position-center_bottomleft w-95-border">
+        <div class="windows95-controller">
+          <p class="msb-font">CV</p>
+          <div class="windows95-btn-controller">
+            <button class="w-95-btn_c"><img src="./images/-.png" alt="Controller"></button>
+            <button class="w-95-btn_c"><img src="./images/_.png" alt="Controller"></button>
+            <button class="w-95-btn_c"><img src="./images/x.png" alt="Controller"></button>
+          </div>
+        </div>
+        <p class="windows95-paragraph ms-font">Envie d'en savoir plus sur moi ?<br><br>Télécharger le dès maintenant en cliquant sur Télécharger</p>
+        <div class="button-container">
+          <a href="./cv_nicolasbaar.pdf" target="_blank" class="w-95-btn" id="startW95">
+            <img src="./images/cv.png" alt="Logo Start">
+            Télécharger le CV
+          </a>
         </div>
       </div>
     </div>

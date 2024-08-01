@@ -57,6 +57,22 @@ a, button, input[type="button"], input[type="submit"], .desktop-folder, .items_d
     }
 }
 
+.position-center {
+  position: absolute;
+  top: calc(50% - 200px);
+  left: calc(50% - 350px);
+}
+.position-top-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.position-top-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
 .jsdos {
   width: 100%;
   height: 100%;
