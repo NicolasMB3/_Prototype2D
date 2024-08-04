@@ -1,13 +1,15 @@
 export class Navigation {
     constructor() {
-        this.dateElement = document.querySelector('.navigation .date-time');
+        this.dateElements = document.querySelectorAll('.date-time');
         this.notificationCenter = document.querySelector('.notification-center');
     }
 
     init() {
         this.updateDateTime();
         setInterval(() => this.updateDateTime(), 30000);
-        this.dateElement.addEventListener('click', this.showNotificationCenter.bind(this));
+        this.dateElements.forEach(element => {
+            element.addEventListener('click', this.showNotificationCenter.bind(this));
+        });
     }
 
     showNotificationCenter() {
@@ -16,11 +18,12 @@ export class Navigation {
 
     updateDateTime() {
         const now = new Date();
-        const options = { day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' };
-        const dateTimeElement = document.querySelector('.navigation .date-time');
-        let formattedDateTime = now.toLocaleDateString('fr-FR', options);
+        const options = { hour: '2-digit', minute: '2-digit' };
+        const formattedDateTime = now.toLocaleTimeString('fr-FR', options);
 
-        formattedDateTime = formattedDateTime.replace('à', ' ');
-        dateTimeElement.textContent = formattedDateTime;
+        // Mettez à jour le texte de chaque élément date-time
+        this.dateElements.forEach(element => {
+            element.textContent = formattedDateTime;
+        });
     }
 }
