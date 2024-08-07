@@ -61,6 +61,7 @@ a, button, input[type="button"], input[type="submit"], .desktop-folder, .items_d
   position: absolute;
   top: calc(50% - 200px);
   left: calc(50% - 350px);
+
 }
 .position-top-left {
   position: absolute;
@@ -87,6 +88,10 @@ a, button, input[type="button"], input[type="submit"], .desktop-folder, .items_d
     left: 0 !important;
     top: 0 !important;
   }
+}
+
+.loading-text span {
+  color: red;
 }
 
 .folder-type {

@@ -69,7 +69,7 @@
             <button class="w-95-btn_c"><img src="./images/x.png" alt="Controller"></button>
           </div>
         </div>
-        <p class="windows95-paragraph ms-font">Envie d'en savoir plus sur moi ?<br><br>Télécharger le dès maintenant en cliquant sur Télécharger</p>
+        <p class="windows95-paragraph ms-font">Vous souhaitez en savoir plus sur moi ?<br><br>Téléchargez mon CV pour découvrir mon parcours et obtenir d'autres informations utiles</p>
         <div class="button-container">
           <a href="./cv_nicolasbaar.pdf" target="_blank" class="w-95-btn" id="startW95">
             <img src="./images/cv.png" alt="Logo Start">
@@ -79,16 +79,19 @@
       </div>
     </div>
     <!-- Loading screen with computer text -->
-    <div class="loading-screen">
+    <div class="loading-screen block_highlights">
       <pre id="loading-text"></pre>
     </div>
     <!--  PrototypeOS -->
     <div class="master">
-      <div class="navigation block_highlights">
-        <p class="prototypeOS">_prototype<span class="bold">OS</span></p>
-        <button id="turnOffButton">Turn Off</button>
-        <p class="date-time"></p>
+      <div class="navigation menu-demarrer w-95-border block_highlights">
+        <button class="w-95-btn">
+          <img src="./images/computer.png" alt="Logo Start">
+          Démarrer
+        </button>
+        <p class="date-time w-95-l-border ms-font"></p>
         <div class="switch-controller">
+          <button id="turnOffButton">Turn Off</button>
           <img id="volume" src="/images/volume.svg" alt="Image de fermeture">
           <img id="power" src="/images/power.svg" alt="Image de fermeture">
         </div>
@@ -96,7 +99,7 @@
       <div class="windows_area"></div>
       <div class="notification-center"></div>
       <div class="dock block_highlights">
-        <div class="dock_content"></div>
+        <div class="dock_content windows95-box w-95-border"></div>
       </div>
     </div>
     <script type="module" src="index.js"></script>

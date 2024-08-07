@@ -1,6 +1,6 @@
 import { Snake } from "../Games/Snake.js";
 import { Doom } from "../Games/Doom.js";
-import { hierarchy } from "../Hierarchy.js";
+import { hierarchy } from "../Controls/Hierarchy.js";
 import {Pacman} from "../Games/Pacman.js";
 
 export class Desktop {
@@ -12,11 +12,11 @@ export class Desktop {
         this.content = {};
         this.isSelecting = false;
         this.selectionBox = null;
-        this.gridSize = 135;
+        this.gridSize = 90;
         this.gap = 10;
         this.startX = 0;
         this.startY = 0;
-        this.iconSize = 50;
+        this.iconSize = 42;
         this.draggedFolderName = null;
         this.windowsArea = document.querySelector('.windows_area');
         this.navigation = document.querySelector('.navigation');
@@ -42,20 +42,20 @@ export class Desktop {
         this.setupDragAndDrop();
     }
 
-    createLN(folderName, contentFunction, icon, type) {
+    createLN(folderName, contentFunction, icon, type, texDesc1, texDesc2) {
         const folderElement = this.createFolderElement(folderName, icon, type);
         this.setFolderPosition(folderElement);
         this.addDragEvents(folderElement, folderName);
         this.content[folderName] = contentFunction;
         if (folderName === 'Poubelle') {
-            this.addDoubleClickEventTrash(folderElement, folderName, contentFunction, icon);
+            this.addDoubleClickEventTrash(folderElement, folderName, contentFunction, icon, texDesc1, texDesc2);
             this.addContextMenuEvent(folderElement);
             folderElement.addEventListener('drop', (e) => this.hierarchy.onTrashDrop(e));
             document.addEventListener('trashUpdated', () => {
                 this.hierarchy.updateTrashWindowContent();
             });
         } else {
-            this.addDoubleClickEvent(folderElement, folderName, contentFunction, icon);
+            this.addDoubleClickEvent(folderElement, folderName, contentFunction, icon, texDesc1, texDesc2);
         }
         document.querySelector('.windows_area').appendChild(folderElement);
         this.hierarchy.moveToTrash(folderElement);
@@ -83,7 +83,7 @@ export class Desktop {
         return folderElement;
     }
 
-    addDoubleClickEvent(folderElement, folderName, contentFunction, icon) {
+    addDoubleClickEvent(folderElement, folderName, contentFunction, icon, textDesc1, textDesc2) {
         folderElement.addEventListener('dblclick', () => {
             folderElement.childrenFolders = folderElement.childrenFolders || {};
             if (folderElement.dataset.type === 'folder' || folderElement.dataset.type === 'game') {
@@ -94,7 +94,7 @@ export class Desktop {
                         const childFolderElement = this.createFolderElement(childFolder.dataset.name, childFolder.querySelector('img').src, childFolder.dataset.type);
                         folderContent += childFolderElement.outerHTML;
                     });
-                    const childWindow = this.windows.createNewWindow("center", icon, folderName, folderContent);
+                    const childWindow = this.windows.createNewWindow("center", icon, folderName, folderContent, textDesc1, textDesc2);
                     childFolders.forEach((childFolder, index) => {
                         const childFolderElementInWindow = childWindow.querySelector(`.desktop-folder:nth-child(${index + 1})`);
                         this.addDoubleClickEvent(childFolderElementInWindow, childFolderElementInWindow.dataset.name, this.content[childFolderElementInWindow.dataset.name], 'icon_du_dossier');
@@ -106,7 +106,7 @@ export class Desktop {
                     } else {
                         content = contentFunction;
                     }
-                    this.windows.createNewWindow("center", icon, folderName, content);
+                    this.windows.createNewWindow("center", icon, folderName, content, textDesc1, textDesc2);
                 }
             } else {
                 let content;
@@ -115,18 +115,18 @@ export class Desktop {
                 } else {
                     content = contentFunction;
                 }
-                this.windows.createNewWindow("center", icon, folderName, content);
+                this.windows.createNewWindow("center", icon, folderName, content, textDesc1, textDesc2);
             }
         });
     }
 
-    addDoubleClickEventTrash(folderElement, folderName, content, icon) {
+    addDoubleClickEventTrash(folderElement, folderName, content, icon, textDesc1, textDesc2) {
         folderElement.addEventListener('dblclick', () => {
             const trashContent = this.hierarchy.trash.map(folder => {
                 const folderElement = this.createFolderElement(folder.dataset.name, folder.querySelector('img').src);
                 return folderElement.outerHTML;
             }).join('');
-            const trashWindow = this.windows.createNewWindow("center", icon, folderName, trashContent);
+            const trashWindow = this.windows.createNewWindow("center", icon, folderName, trashContent, textDesc1, textDesc2);
             this.hierarchy.trash.forEach((folder, index) => {
                 const folderElementInWindow = trashWindow.querySelector(`.desktop-folder:nth-child(${index + 1})`);
                 this.hierarchy.addRestoreEvent(folderElementInWindow);
@@ -585,7 +585,6 @@ export class Desktop {
     }
 
     startSelection(e) {
-
         if (e.target.closest('.desktop-folder')) return;
         if (e.button !== 0) return;
 
@@ -606,15 +605,13 @@ export class Desktop {
         this.selectionBox.style.position = 'absolute';
         this.selectionBox.style.left = `${this.startX}px`;
         this.selectionBox.style.top = `${this.startY}px`;
-        this.selectionBox.style.border = '1px solid rgba(12, 36, 97,1.0)';
-        this.selectionBox.style.background = 'rgba(74, 105, 189,0.3)';
-        this.selectionBox.style.pointerEvents = 'none'
+        this.selectionBox.classList.add('selection-box');
 
         const windows = document.querySelectorAll('.window');
         windows.forEach(window => window.classList.add('no-select'));
 
-        document.addEventListener('mousemove', this.updateSelection.bind(this));
-        document.addEventListener('mouseup', this.endSelection.bind(this));
+        document.addEventListener('mousemove', this.updateSelection.bind(this), { passive: true });
+        document.addEventListener('mouseup', this.endSelection.bind(this), { once: true });
 
         document.body.appendChild(this.selectionBox);
     }
@@ -673,8 +670,6 @@ export class Desktop {
         if (!this.isSelecting) return;
 
         document.removeEventListener('mousemove', this.updateSelection.bind(this));
-        document.removeEventListener('mouseup', this.endSelection.bind(this));
-
         const windows = document.querySelectorAll('.window');
         windows.forEach(window => window.classList.remove('no-select'));
 
@@ -682,4 +677,5 @@ export class Desktop {
         document.body.removeChild(this.selectionBox);
         this.selectionBox = null;
     }
+
 }

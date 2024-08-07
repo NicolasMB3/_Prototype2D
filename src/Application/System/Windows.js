@@ -1,4 +1,4 @@
-import { WindowController } from '../Controller.js';
+import { WindowController } from '../Controls/Controller.js';
 import { Navigation } from "./Navigation.js";
 
 import { KEY_SYMBOLS } from '../../contents/parameters/key_symbols.js';
@@ -23,19 +23,27 @@ export class Windows {
         this.windows.push(windowController);
     }
 
-    createWindowElement(position, icon, title, content) {
+    createWindowElement(position, icon, title, content, textDesc1, textDesc2) {
         return `
             <div class="window position-${ position } ${title === 'Snake' ? 'snake-window' : ''}" data-name="${ title }" style="--random-color: ${this.getRandomColor()}">
                 <div class="controller block_highlights ${ localStorage.getItem("controllerPlacement") === "left" ? 'row-reverse' : '' }">
-                    <p>${ title }</p>
-                    <div class="icon_controller">
-                        <span class="minus"></span>
-                        <span class="expand"></span>
-                        <span class="close"></span>
+                    <p class="icon-text"> <img src="${ icon }" alt="Icone"> ${ title }</p>
+                    <div class="windows95-btn-controller icon_controller">
+                        <button class="w-95-btn_c minus"><img src="./images/-.png" alt="Controller"></button>
+                        <button class="w-95-btn_c expand"><img src="./images/_.png" alt="Controller"></button>
+                        <button class="w-95-btn_c close"><img src="./images/x.png" alt="Controller"></button>
                     </div>
                 </div>
                 <div class="content">
                     ${ content }
+                </div>
+                <div class="windows95-footer">
+                    <div>
+                        <p>${textDesc1}</p>
+                    </div>
+                    <div>
+                        <p>${textDesc2}</p>
+                    </div>
                 </div>
             </div>
         `;
@@ -49,9 +57,10 @@ export class Windows {
         return '#' + color;
     }
 
-    createNewWindow(position, icon, title, contentFunction) {
+    createNewWindow(position, icon, title, contentFunction, textDesc1, textDesc2) {
         const content = typeof contentFunction === 'function' ? contentFunction() : contentFunction;
-        const windowsElement = this.createWindowElement(position, icon, title, content);
+        console.log(textDesc1, textDesc2);
+        const windowsElement = this.createWindowElement(position, icon, title, content, textDesc1, textDesc2);
 
         document.querySelector('.windows_area').insertAdjacentHTML('beforeend', windowsElement);
         const newWindowElement = document.querySelector('.windows_area').lastElementChild;

@@ -8,9 +8,9 @@ const desktop = new Desktop(windows);
 const doom = new Doom();
 
 export const shortcuts = [
-    { title: 'Paramètres', path: params, icon: "./images/parameters.png", type: "system", showInDock: true },
-    { title: 'Snake', path: desktop.launchSnake, icon: "./images/snake.png", type: "game", showInDock: true },
-    { title: 'Doom', path: desktop.launchDoom, icon: "./images/doom.png", type: "game", showInDock: true },
-    { title: 'Pacman', path: desktop.launchPacman, icon: "./images/pacman.png", type: "game", showInDock: true },
-    { title: 'Corbeille', path: '', icon: "./images/bin.png", type: "system", showInDock: true },
+    { title: 'Paramètres', path: params, icon: "./images/parameters.png", type: "system", showInDock: true, text1: "Paramètres", text2: "Personnalisez votre expérience" },
+    { title: 'Snake', path: desktop.launchSnake, icon: "./images/pacman.png", type: "game", showInDock: true, text1: "Paramètres", text2: "Personnalisez votre expérience" },
+    { title: 'Doom', path: desktop.launchDoom, icon: "./images/doom.png", type: "game", showInDock: true, text1: "10 décembre 1993", text2: "Doom I par id Software" },
+    { title: 'Pacman', path: desktop.launchPacman, icon: "./images/pacman.png", type: "game", showInDock: true, text1: "22 mai 1980", text2: "Pac-man par Tōru Iwatani" },
+    { title: 'Corbeille', path: '', icon: "./images/bin.png", type: "system", showInDock: true, text1: "Paramètres", text2: "Personnalisez votre expérience" },
 ];

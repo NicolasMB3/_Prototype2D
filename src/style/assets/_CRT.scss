@@ -87,10 +87,16 @@
 }
 
 .container {
-  background: #121010;
+  background-image: linear-gradient(to right bottom, #008080, #007979, #007272, #006c6c, #006565);
   position: relative;
   overflow: hidden;
   border: 2px solid #666;
+}
+
+.selection-box {
+  border: 2px dotted #d6d0d0;
+  // box-shadow: inset -1px -1px 0 #7f7f7f, inset 1px 1px 0 #fff;
+  pointer-events: none;
 }
 
 .container::before {

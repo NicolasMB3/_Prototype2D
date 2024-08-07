@@ -2,6 +2,7 @@ import { Windows } from "./System/Windows.js";
 import { shortcuts } from "../contents/paths/contents.js";
 import { Desktop } from "./System/Desktop.js";
 import { Dock } from "./System/Dock.js";
+import { BootUP } from "./Controls/BootUP.js";
 
 export default class Application {
     constructor() {
@@ -13,6 +14,8 @@ export default class Application {
         this.container = document.querySelector('.container');
         this.loadingScreen = document.querySelector('.loading-screen');
         this.loadingText = document.getElementById('loading-text');
+
+        this.bootup = new BootUP(this.loadingScreen, this.loadingText, this.container);
 
         this.setupHoverEffect();
 
@@ -57,68 +60,13 @@ export default class Application {
         setTimeout(() => {
             this.startComputer();
             window.parent.postMessage('startPlaneClicked', '*');
-        }, 3000000)
+        }, 3000000);
         // this.startComputer();
     }
 
     startComputer() {
         this.startScreen.style.display = 'none';
-        this.showLoadingScreen();
-    }
-
-    showLoadingScreen() {
-        const loadingMessages = [
-            'Initialisation du système...',
-            'Chargement des modules de base...',
-            'Vérification de la mémoire...',
-            'Connexion au réseau local...',
-            'Téléchargement des dépendances...',
-            'Téléchargement : [          ]',
-            'Téléchargement : [*         ]',
-            'Téléchargement : [**        ]',
-            'Téléchargement : [***       ]',
-            'Téléchargement : [****      ]',
-            'Téléchargement : [*****     ]',
-            'Téléchargement : [******    ]',
-            'Téléchargement : [*******   ]',
-            'Téléchargement : [********  ]',
-            'Téléchargement : [********* ]',
-            'Téléchargement : [**********]',
-            'Téléchargement terminé.',
-            'Configuration des paramètres du système...',
-            'Initialisation des pilotes...',
-            'Lancement des services de base...',
-            'Lancement des services réseau...',
-            'Vérification des mises à jour...',
-            'Installation des mises à jour...',
-            'Optimisation des performances...',
-            'Démarrage des interfaces utilisateur...',
-            'Chargement des préférences utilisateur...',
-            'Préparation de l\'environnement de bureau...',
-            'Finalisation du démarrage...'
-        ];
-
-        let index = 0;
-        const intervalId = setInterval(() => {
-            if (index < loadingMessages.length) {
-                this.loadingText.textContent += loadingMessages[index] + '\n';
-                index++;
-            } else {
-                clearInterval(intervalId);
-                setTimeout(() => {
-                    this.loadingScreen.style.display = 'none';
-                    this.container.style.display = 'block';
-                    this.container.classList.add('fade-out');
-                    this.removeFadeOutClassAfterDelay();
-                }, 500);
-            }
-        }, 200);
-    }
-
-    removeFadeOutClassAfterDelay() {
-        setTimeout(() => {
-            this.container.classList.remove('fade-out');
-        }, 500);
+        this.bootup.start();
     }
 
     setupTurnOffButton() {
@@ -153,7 +101,7 @@ export default class Application {
         shortcuts.forEach(shortcut => {
             const dock = new Dock(shortcut, shortcut.path, this.windows);
             dock.createDockElement();
-            this.desktop.createLN(shortcut.title, shortcut.path, shortcut.icon, shortcut.type);
+            this.desktop.createLN(shortcut.title, shortcut.path, shortcut.icon, shortcut.type, shortcut.text1, shortcut.text2);
         });
     }
 
