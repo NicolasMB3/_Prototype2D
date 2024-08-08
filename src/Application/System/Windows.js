@@ -36,13 +36,13 @@ export class Windows {
                 </div>
                 <div class="content">
                     ${ content }
-                </div>
-                <div class="windows95-footer">
-                    <div>
-                        <p>${textDesc1}</p>
-                    </div>
-                    <div>
-                        <p>${textDesc2}</p>
+                    <div class="windows95-footer">
+                        <div>
+                            <p>${textDesc1}</p>
+                        </div>
+                        <div>
+                            <p>${textDesc2}</p>
+                        </div>
                     </div>
                 </div>
             </div>

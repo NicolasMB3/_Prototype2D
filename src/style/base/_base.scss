@@ -24,7 +24,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
-a, button, input[type="button"], input[type="submit"], .desktop-folder, .items_dock {
+a, button, input[type="button"], input[type="submit"], .desktop-folder, .items_dock, li {
   cursor: url('/images/cursor-pointer.png'), auto !important;
 }
 
@@ -48,6 +48,10 @@ a, button, input[type="button"], input[type="submit"], .desktop-folder, .items_d
 
 .bold {
   font-weight: 700;
+}
+
+.master {
+  height: 100vh;
 }
 
 .row-reverse {
@@ -91,7 +95,7 @@ a, button, input[type="button"], input[type="submit"], .desktop-folder, .items_d
 }
 
 .loading-text span {
-  color: red;
+  color: #9f1515;
 }
 
 .folder-type {

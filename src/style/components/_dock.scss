@@ -1,9 +1,13 @@
 .dock {
+  position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
   display: flex;
   align-content: center;
   justify-content: center;
   align-items: center;
-  height: 100px;
+  height: 70px;
 }
 
 .dock_content {

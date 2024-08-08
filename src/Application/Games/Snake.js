@@ -85,11 +85,22 @@ export class Snake {
     setupCanvas() {
         this.canvas = document.getElementById(this.canvasId);
         this.context = this.canvas.getContext('2d');
-        this.board = Array(this.canvas.width / 10).fill(undefined, undefined, undefined).map(() => Array(this.canvas.height / 10).fill(0));
+
+        const boardWidth = Math.floor(this.canvas.width / 10);
+        const boardHeight = Math.floor(this.canvas.height / 10);
+
+        if (boardWidth > 0 && boardHeight > 0) {
+            this.board = Array(boardWidth).fill(undefined).map(() => Array(boardHeight).fill(0));
+        } else {
+            console.error('Canvas dimensions are invalid:', this.canvas.width, this.canvas.height);
+            return;
+        }
+
         this.createPauseOverlay();
         this.snakeColor = localStorage.getItem('snakeColor') || '#0e881f';
         this.canvas.parentElement.appendChild(this.pauseOverlay);
     }
+
 
     setupGame() {
         this.draw();

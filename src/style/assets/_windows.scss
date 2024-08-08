@@ -1,6 +1,6 @@
 .windows_area {
   width: 100%;
-  height: calc(100vh - 140px);
+  height: calc(100vh - 100px);
 }
 
 .window {
@@ -12,7 +12,7 @@
   box-shadow: inset 2px 2px 0px #FFFFFF, inset -2px -2px 0px #667378;
   padding: 2px;
   width: 700px;
-  height: auto;
+  height: 400px;
   animation: jerkup 4s infinite;
 }
 
@@ -80,14 +80,12 @@
   border-bottom: 1px solid #C0C0C0;
   border-top: 2px solid #DFDFDF;
   border-left: 1px solid #DFDFDF;
-
-  box-shadow: inset 2px 2px 0px #FFFFFF,
-  inset -2px -2px 0px #667378;
-
+  box-shadow: inset 2px 2px 0px #FFFFFF, inset -2px -2px 0px #667378;
   margin: 8px 0 0 0;
-
-  gap: 10px;
+  gap: 2px;
   display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .controller-settings {
@@ -143,7 +141,7 @@
 .windows95-footer {
   display: flex;
   gap: 0.2rem;
-  padding: 2px;
+  padding: 4px 6px;
   font-family: "MS Sans Serif", sans-serif;
   font-size: 12px;
   div {

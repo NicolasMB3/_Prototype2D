@@ -51,7 +51,7 @@ export class BootUP {
         for (let messageIndex = 0; messageIndex < messages.length; messageIndex++) {
             const message = messages[messageIndex];
 
-            if (messageIndex > 0 && Math.random() > 0.8) {
+            if (messageIndex > 0 && Math.random() > 1.5) {
                 this.loadingText.textContent += '\n';
             }
 

@@ -260,8 +260,15 @@ export class Desktop {
         const snakeCanvas = node.querySelector('#snake');
         if (snakeCanvas) {
             snakeCanvas.id = `snake-${this.snakeGameCounter++}`;
+
+            const controllerHeight = node.querySelector('.controller').offsetHeight;
+            const footerHeight = node.querySelector('.windows95-footer').offsetHeight + 14;
+
+            const availableHeight = node.offsetHeight - controllerHeight - footerHeight;
+
             snakeCanvas.width = node.offsetWidth;
-            snakeCanvas.height = node.offsetHeight - node.querySelector('.controller').offsetHeight;
+            snakeCanvas.height = availableHeight;
+
             if (snakeCanvas.getContext) {
                 const snakeGame = new Snake(snakeCanvas.id, this.windows);
                 snakeGame.init();

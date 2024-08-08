@@ -1,6 +1,6 @@
 .snake {
   width: 100%;
-  border-radius: 10px;
+  border: 1px solid #ffffff;
 }
 
 .main-menu {
@@ -42,21 +42,8 @@
 
 .snake-window .controller {
   backdrop-filter: blur(10px);
-  background-color: rgba(0, 0, 0, 0.5);
+  background-image: linear-gradient(to right, #000080, #002c9a, #004ab0, #0067c1, var(--random-color));
   overflow: hidden;
-
-  &:before {
-    opacity: 0.55;
-    content: '';
-    position: absolute;
-    top: -30px;
-    left: -100px;
-    width: 200px;
-    height: 200px;
-    filter: blur(55px);
-    background-color: var(--random-color);
-    border-radius: 500px;
-  }
 }
 
 .pause {
