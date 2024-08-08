@@ -1,5 +1,4 @@
 import { WindowController } from '../Controls/Controller.js';
-import { Navigation } from "./Navigation.js";
 
 import { KEY_SYMBOLS } from '../../contents/parameters/key_symbols.js';
 import { paramsController } from "../../contents/parameters/controller.js";
@@ -11,14 +10,7 @@ export class Windows {
         this.highestZIndex = 0;
         this.contentParams = paramsController;
         localStorage.setItem('controllerPlacement', 'right');
-        this.classNavigation = new Navigation();
-        this.init();
     }
-
-    init() {
-        this.classNavigation.init();
-    }
-
     addWindow(windowController) {
         this.windows.push(windowController);
     }
@@ -59,7 +51,6 @@ export class Windows {
 
     createNewWindow(position, icon, title, contentFunction, textDesc1, textDesc2) {
         const content = typeof contentFunction === 'function' ? contentFunction() : contentFunction;
-        console.log(textDesc1, textDesc2);
         const windowsElement = this.createWindowElement(position, icon, title, content, textDesc1, textDesc2);
 
         document.querySelector('.windows_area').insertAdjacentHTML('beforeend', windowsElement);
@@ -196,34 +187,14 @@ export class Windows {
     }
 
     bringToFront(windowController) {
+
         windowController.zIndex = ++this.highestZIndex;
         windowController.windowElement.style.zIndex = this.highestZIndex;
-    }
 
-    createPopup(message, buttonText1, buttonText2) {
-        const blurBackground = document.createElement('div');
-        blurBackground.classList.add('blur-background');
+        this.windows.forEach(wc => {
+            wc.windowElement.querySelector('.controller').classList.remove('active-window');
+        });
 
-        const popup = document.createElement('div');
-        popup.classList.add('popup');
-
-        const text = document.createElement('p');
-        text.textContent = message;
-        popup.appendChild(text);
-
-        if (buttonText1) {
-            const button1 = document.createElement('button');
-            button1.textContent = buttonText1;
-            popup.appendChild(button1);
-        }
-
-        if (buttonText2) {
-            const button2 = document.createElement('button');
-            button2.textContent = buttonText2;
-            popup.appendChild(button2);
-        }
-
-        blurBackground.appendChild(popup);
-        document.body.appendChild(blurBackground);
+        windowController.windowElement.querySelector('.controller').classList.add('active-window');
     }
 }

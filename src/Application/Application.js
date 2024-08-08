@@ -3,10 +3,12 @@ import { shortcuts } from "../contents/paths/contents.js";
 import { Desktop } from "./System/Desktop.js";
 import { Dock } from "./System/Dock.js";
 import { BootUP } from "./Controls/BootUP.js";
+import { Navigation } from "./System/Navigation.js";
 
 export default class Application {
     constructor() {
         this.windows = new Windows();
+        this.classNavigation = new Navigation().init();
         this.desktop = new Desktop(this.windows);
         this.turnOffButton = document.getElementById('turnOffButton');
 

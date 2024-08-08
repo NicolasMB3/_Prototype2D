@@ -70,6 +70,16 @@
   margin: 0;
 }
 
+.controller-volume {
+  display: flex;
+  gap: 0.5rem;
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+}
+
 .submenu li {
   padding: 5px 10px;
   background-color: #c0c0c0;
@@ -92,4 +102,40 @@
 
 .cv-item:hover .submenu {
   display: block;
+}
+
+
+.volume-controller {
+  position: absolute;
+  top: 40px;
+  right: 9px;
+  width: 200px;
+  background-color: #c0c0c0;
+  border: 2px solid #808080;
+  box-shadow: 2px 2px #ffffff, -2px -2px #000000;
+  z-index: 1000;
+}
+
+.volume-controller-header {
+  background-color: #000080;
+  color: white;
+  padding: 4px;
+  font-size: 12px;
+}
+
+.volume-slider {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.volume-slider input[type="range"] {
+  width: 100%;
+}
+
+.volume-footer {
+  padding: 5px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 5px;
 }

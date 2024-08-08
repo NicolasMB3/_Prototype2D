@@ -1,5 +1,6 @@
 .snake {
   width: 100%;
+  height: 100%;
   border: 1px solid #ffffff;
 }
 
@@ -10,16 +11,28 @@
   flex-direction: column;
   overflow: hidden;
   gap: .6rem;
+
+  h3 {
+    font-family: 'Perfect DOS VGA 437 Win', 'Tahoma', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #171717;
+    font-size: 60px;
+  }
+
   button {
-    background-color: #2f3542;
-    border: none;
-    border-radius: 5px;
+    border-right: 2px solid #C0C0C0;
+    border-bottom: 1px solid #C0C0C0;
+    border-top: 2px solid #DFDFDF;
+    border-left: 1px solid #DFDFDF;
+    box-shadow: inset 2px 2px 0px #FFFFFF, inset -2px -2px 0px #667378;
     padding: .8rem;
     width: 200px;
     cursor: pointer;
-    color: white;
+    color: #191919;
     &:hover {
-      background-color: #545e70;
+      color: white;
+      background-color: #a2a4a6;
     }
   }
 }
@@ -38,12 +51,6 @@
 
 .controller-text {
   margin-top: 1rem;
-}
-
-.snake-window .controller {
-  backdrop-filter: blur(10px);
-  background-image: linear-gradient(to right, #000080, #002c9a, #004ab0, #0067c1, var(--random-color));
-  overflow: hidden;
 }
 
 .pause {

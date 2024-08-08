@@ -30,7 +30,6 @@
 
 .controller {
   font-family: "MS Sans Serif Bold", sans-serif;
-  background-image: linear-gradient(to right, #000080, #002c9a, #004ab0, #0067c1, #1084d0);
   display: flex;
   height: 22px;
   justify-content: space-between;
@@ -41,6 +40,14 @@
   font-size: 14px;
   line-height: 16px;
   gap: 2rem;
+}
+
+.controller {
+  background-image: linear-gradient(to right, #808080, #8d8d8d, #9a9a9a, #a7a7a7, #b5b5b5);
+}
+
+.controller.active-window {
+  background-image: linear-gradient(to right, #000080, #002c9a, #004ab0, #0067c1, #1084d0);
 }
 
 .icon-text {

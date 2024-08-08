@@ -1,24 +1,19 @@
 export class Navigation {
     constructor() {
         this.dateElements = document.querySelectorAll('.date-time');
-        this.notificationCenter = document.querySelector('.notification-center');
         this.startBtn = document.querySelector('.start-btn');
         this.startMenu = document.querySelector('.start-menu');
+        this.volumeController = document.querySelector('.volume-controller');
+        this.volumeButton = document.querySelector('#volume');
         this.isMenuOpen = false;
     }
 
     init() {
         this.updateDateTime();
         setInterval(() => this.updateDateTime(), 30000);
-        this.dateElements.forEach(element => {
-            element.addEventListener('click', this.showNotificationCenter.bind(this));
-        });
         this.startBtn.addEventListener('click', this.toggleStartMenu.bind(this));
         document.addEventListener('click', this.handleDocumentClick.bind(this));
-    }
-
-    showNotificationCenter() {
-        this.notificationCenter.style.display = 'block';
+        this.volumeButton.addEventListener('click', this.toggleVolumeController.bind(this));
     }
 
     updateDateTime() {
@@ -37,6 +32,15 @@ export class Navigation {
         this.startMenu.style.display = this.isMenuOpen ? 'flex' : 'none';
     }
 
+    toggleVolumeController(event) {
+        event.stopPropagation();
+
+        if (this.volumeController) {
+            const isVolumeVisible = this.volumeController.style.display === 'block';
+            this.volumeController.style.display = isVolumeVisible ? 'none' : 'block';
+        }
+    }
+
     handleDocumentClick(event) {
         if (this.isMenuOpen && !this.startBtn.contains(event.target) && !this.startMenu.contains(event.target)) {
             this.startMenu.style.display = 'none';
@@ -44,11 +48,3 @@ export class Navigation {
         }
     }
 }
-
-
-
-// <!--    <div class="switch-controller">-->
-// <!--      <button id="turnOffButton">Turn Off</button>-->
-// <!--      <img id="volume" src="/images/volume.svg" alt="Image de fermeture">-->
-// <!--      <img id="power" src="/images/power.svg" alt="Image de fermeture">-->
-// <!--    </div>-->

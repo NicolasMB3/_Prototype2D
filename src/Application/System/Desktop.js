@@ -1,7 +1,7 @@
 import { Snake } from "../Games/Snake.js";
 import { Doom } from "../Games/Doom.js";
 import { hierarchy } from "../Controls/Hierarchy.js";
-import {Pacman} from "../Games/Pacman.js";
+import { Pacman } from "../Games/Pacman.js";
 
 export class Desktop {
 
@@ -262,9 +262,8 @@ export class Desktop {
             snakeCanvas.id = `snake-${this.snakeGameCounter++}`;
 
             const controllerHeight = node.querySelector('.controller').offsetHeight;
-            const footerHeight = node.querySelector('.windows95-footer').offsetHeight + 14;
-
-            const availableHeight = node.offsetHeight - controllerHeight - footerHeight;
+            const footerHeight = node.querySelector('.windows95-footer').offsetHeight;
+            const availableHeight = node.offsetHeight - controllerHeight - footerHeight - 40;
 
             snakeCanvas.width = node.offsetWidth;
             snakeCanvas.height = availableHeight;

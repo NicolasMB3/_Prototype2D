@@ -132,7 +132,22 @@
         <li id="turnOffButton"><img src="./images/standby.png"/>Arrêter</li>
       </ul>
     </div>
-    <p class="date-time w-95-l-border ms-font"></p>
+    <div class="w-95-l-border ms-font controller-volume">
+      <img src="./images/volume.png" alt="Changer le volume" id="volume">
+      <p class="date-time"></p>
+    </div>
+    <div class="volume-controller w-95-border" style="display: none;">
+      <div class="volume-controller-header windows95-controller">
+        <p>Volume</p>
+      </div>
+      <div class="volume-slider">
+        <input type="range" min="0" max="100" value="50">
+      </div>
+      <div class="volume-footer windows95-footer">
+        <button class="w-95-btn">OK</button>
+        <button class="w-95-btn">Annuler</button>
+      </div>
+    </div>
   </div>
   <div class="windows_area"></div>
   <div class="notification-center"></div>
