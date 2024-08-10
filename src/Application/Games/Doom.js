@@ -4,7 +4,6 @@ export class Doom {
         this.windows = windows;
         this.emulator = null;
 
-        // Ajout du gestionnaire d'événements pour le bouton .close
         this.addCloseButtonHandler();
     }
 
@@ -50,8 +49,12 @@ export class Doom {
 
     stop() {
         if (this.emulator) {
-            this.emulator.stop();
-            console.log("Emulator stopped.");
+            this.emulator.stop().then(() => {
+                this.emulator = null;
+                console.log("Emulator stopped and cleaned up.");
+            }).catch(error => {
+                console.error("Error stopping emulator:", error);
+            });
         } else {
             console.error("No emulator instance to stop.");
         }

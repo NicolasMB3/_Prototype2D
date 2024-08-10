@@ -17,9 +17,13 @@
   <meta property="og:description" content="Description de votre page">
   <meta property="og:image" content="URL de l'image à afficher">
   <meta property="og:url" content="URL de votre page">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
 </head>
 
 <body class="container">
+<div id="code-container" style="display:none;">
+  <div class="cursor"></div>
+</div>
 <!--  Start-->
 <div class="start">
   <div class="menu-demarrer w-95-border">
@@ -125,7 +129,7 @@
       <ul class="start-menu-list">
         <li class="cv-item"><img src="./images/book.png"/>CV
           <ul class="submenu w-95-border">
-            <li><a href="/path/to/cv.pdf" download>Télécharger le CV</a></li>
+            <li><a href="./cv_nicolasbaar.pdf" download>Télécharger le CV</a></li>
           </ul>
         </li>
         <hr>
@@ -141,11 +145,10 @@
         <p>Volume</p>
       </div>
       <div class="volume-slider">
-        <input type="range" min="0" max="100" value="50">
+        <input type="range" min="0" max="100" value="50" class="win95-range">
       </div>
       <div class="volume-footer windows95-footer">
         <button class="w-95-btn">OK</button>
-        <button class="w-95-btn">Annuler</button>
       </div>
     </div>
   </div>

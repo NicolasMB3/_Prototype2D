@@ -1,83 +1,143 @@
+/* Parent Container */
+.param_parent {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  gap: 1rem;
+  overflow: auto;
+  background-color: #c0c0c0;
+  font-family: "MS Sans Serif", Tahoma, sans-serif;
+}
+
+/* Navigation Sidebar */
 .param_nav {
   display: flex;
+  flex-direction: column;
   height: 100%;
   gap: 15px;
   width: 15rem;
   overflow-y: auto;
   padding: 10px;
-  background: #2f3542;
-  color: white;
+  background: #d4d0c8;
+  color: black;
+  border-right: 2px solid #808080;
+  box-shadow: inset -1px -1px 0 #ffffff;
 }
+
 .param_nav ul {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 5px;
   width: 100%;
-  padding-right: 15px;
+  padding: 0;
+  list-style-type: none;
+  margin: 0;
 }
+
 .param_nav li {
   cursor: pointer;
   display: flex;
   align-items: center;
-  border-radius: 3px;
+  border: 1px solid #808080;
   padding: 5px;
   width: 100%;
-}
-.param_nav li:hover {
-  background: #57606f;
+  background: #d4d0c8;
+  box-shadow: inset 1px 1px 0 #ffffff, inset -1px -1px 0 #808080;
 }
 
+.param_nav li:hover {
+  background: #000080;
+  color: white;
+  border: 1px solid #000080;
+}
+
+/* Content Area */
 .param_content {
   width: 100%;
   padding: 1rem;
   overflow-y: auto;
+  background-color: #ffffff;
+  border: 2px solid #808080;
+  box-shadow: inset -1px -1px 0 #ffffff, inset 1px 1px 0 #808080;
+}
 
-  .param7_content {
-    width: 100%;
+.param_content h1, .param_content p {
+  color: black;
+  font-size: 12px;
+}
+
+/* Credits Title */
+.credits-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 2px solid #808080;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+
+  img {
+    width: 42px;
+    height: 42px;
   }
+}
 
-  .map-container {
-    display: grid;
-    grid-template-columns: 60px 60px 60px;
-    grid-template-rows: 1fr 1fr;
+.credits-title h1 {
+  font-size: 16px;
+  color: #000080;
+}
 
-    justify-content: center;
-    gap: 1rem;
-    grid-auto-flow: row;
-    margin-top: 2rem;
-    grid-template-areas:
+/* Credits Content */
+.credits-content p {
+  font-family: 'MS Sans Serif', serif;
+  margin: 5px 0;
+  font-size: 16px;
+}
+
+.credits-content a {
+  font-family: 'MS Sans Serif', serif;
+  color: #000080;
+  text-decoration: none;
+}
+
+.credits-content a:hover {
+  text-decoration: underline;
+}
+
+/* Map Container */
+.map-container {
+  display: grid;
+  grid-template-columns: 60px 60px 60px;
+  grid-template-rows: 1fr 1fr;
+  justify-content: center;
+  gap: 1rem;
+  grid-auto-flow: row;
+  margin-top: 2rem;
+  grid-template-areas:
     ". ToucheH ."
     "ToucheG ToucheB ToucheD";
-
-  }
-
-  .key-input {
-    height: 60px;
-    width: 60px;
-    background-color: #677087;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid #2f3542;
-    color: white;
-    font-weight: 500;
-
-    &.toucheP {
-      margin-top: 0.4rem;
-    }
-    &.active {
-      background-color: #2f3542;
-      border: 3px solid #6d1cc6;
-    }
-  }
-
-  .ToucheH { grid-area: ToucheH; }
-
-  .ToucheB { grid-area: ToucheB; }
-
-  .ToucheG { grid-area: ToucheG; }
-
-  .ToucheD { grid-area: ToucheD; }
-
 }
+
+.key-input {
+  height: 60px;
+  width: 60px;
+  background-color: #c0c0c0;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #808080;
+  box-shadow: inset 1px 1px 0 #ffffff, inset -1px -1px 0 #808080;
+  color: black;
+  font-weight: 500;
+}
+
+.key-input.active {
+  background-color: #000080;
+  border: 3px solid #6d1cc6;
+  color: white;
+}
+
+.ToucheH { grid-area: ToucheH; }
+.ToucheB { grid-area: ToucheB; }
+.ToucheG { grid-area: ToucheG; }
+.ToucheD { grid-area: ToucheD; }

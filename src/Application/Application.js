@@ -67,6 +67,7 @@ export default class Application {
     }
 
     startComputer() {
+        document.body.style.backgroundImage = 'linear-gradient(to right bottom, #008080, #007979, #007272, #006c6c, #006565)';
         this.startScreen.style.display = 'none';
         this.bootup.start();
     }
@@ -79,16 +80,38 @@ export default class Application {
     }
 
     setupOffComputer() {
+        const codeContainer = document.getElementById('code-container');
+
+        document.body.style.backgroundImage = 'linear-gradient(to right bottom, #131313, #1b1b1b, #232323, #2b2b2c, #343334)';
+
+        document.body.classList.add('code-animation');
+        codeContainer.style.display = 'flex';
+
+        setTimeout(() => {
+            codeContainer.style.display = 'none';
+            document.body.classList.remove('code-animation');
+            this.triggerTurnOffAnimation();
+        }, 4000);
+    }
+
+    triggerTurnOffAnimation() {
+        const scanline = document.createElement('div');
+        scanline.classList.add('scanline');
+        document.body.appendChild(scanline);
+
         document.body.classList.add('turn-off-animation');
         new Audio('./sounds/off.mp3').play().then(r => r).catch(e => e);
+
         setTimeout(() => {
             document.querySelectorAll('.crt-glitch').forEach(el => el.remove());
             document.body.classList.remove('fade-out');
             document.body.classList.remove('turn-off-animation');
             this.startScreen.style.display = 'flex';
             this.resetLoadingScreen();
-        }, 550);
+            scanline.remove();
+        }, 1500);
     }
+
 
     notifyParent() {
         window.parent.postMessage('stopPlaneClicked', '*');

@@ -90,7 +90,6 @@
   background-image: linear-gradient(to right bottom, #008080, #007979, #007272, #006c6c, #006565);
   position: relative;
   overflow: hidden;
-  border: 2px solid #666;
 }
 
 .selection-box {
@@ -114,25 +113,100 @@
   pointer-events: none;
 }
 
+body.turn-off-animation {
+  animation: turn-off 1.5s cubic-bezier(0.23, 1.00, 0.32, 1.00);
+  animation-fill-mode: forwards;
+  position: relative;
+  overflow: hidden;
+}
+
 @keyframes turn-off {
   0% {
-    transform: scale(1, 1);
+    transform: scale(1);
     filter: brightness(1);
     opacity: 1;
   }
+  20% {
+    filter: brightness(2);
+  }
+  40% {
+    filter: brightness(0.5);
+    transform: scale(1.2, 0.8);
+  }
   60% {
-    transform: scale(1.3, 0.001);
+    transform: scale(1.3, 0.01) translateY(50%);
     filter: brightness(10);
   }
+  80% {
+    transform: scale(1, 0.001) translateY(0);
+    filter: brightness(30);
+  }
   100% {
-    transform: scale(0.000, 0.0001);
-    filter: brightness(50);
+    transform: scale(0.0001);
+    filter: brightness(0);
   }
 }
 
-body.turn-off-animation {
-  animation: turn-off 0.9s cubic-bezier(0.230, 1.000, 0.320, 1.000);
-  animation-fill-mode: forwards;
+.scanline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.05) 50%);
+  background-size: 100% 2px;
+  pointer-events: none;
+  overflow: hidden;
+  animation: scanline 0.15s steps(20) infinite;
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(2px);
+  }
+}
+
+body.code-animation {
+  background-color: black;
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.cursor {
+  display: inline-block;
+  width: 8px;
+  height: 20px;
+  background-color: white;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+#code-container {
+  position: relative;
+  display: none;
+  z-index: 999999999;
+  height: 100vh;
+  width: 100vw;
+  background: black;
+  flex-direction: column;
+  padding: 8px;
 }
 
 @keyframes jerkup {

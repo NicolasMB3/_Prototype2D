@@ -5,6 +5,7 @@ export class Navigation {
         this.startMenu = document.querySelector('.start-menu');
         this.volumeController = document.querySelector('.volume-controller');
         this.volumeButton = document.querySelector('#volume');
+        this.volumeOkButton = document.querySelector('.volume-controller .w-95-btn');
         this.isMenuOpen = false;
     }
 
@@ -14,6 +15,7 @@ export class Navigation {
         this.startBtn.addEventListener('click', this.toggleStartMenu.bind(this));
         document.addEventListener('click', this.handleDocumentClick.bind(this));
         this.volumeButton.addEventListener('click', this.toggleVolumeController.bind(this));
+        this.volumeOkButton.addEventListener('click', this.toggleVolumeController.bind(this));
     }
 
     updateDateTime() {

@@ -12,5 +12,5 @@ export const shortcuts = [
     { title: 'Snake', path: desktop.launchSnake, icon: "./images/pacman.png", type: "game", showInDock: true, text1: "03/02/1998", text2: "Snake par NicolasB" },
     { title: 'Doom', path: desktop.launchDoom, icon: "./images/doom.png", type: "game", showInDock: true, text1: "10 décembre 1993", text2: "Doom I par id Software" },
     { title: 'Pacman', path: desktop.launchPacman, icon: "./images/pacman.png", type: "game", showInDock: true, text1: "22 mai 1980", text2: "Pac-man par Tōru Iwatani" },
-    { title: 'Corbeille', path: '', icon: "./images/bin.png", type: "system", showInDock: false, text1: "Paramètres", text2: "Personnalisez votre expérience" },
+    // { title: 'Corbeille', path: '', icon: "./images/bin.png", type: "system", showInDock: false, text1: "Paramètres", text2: "Personnalisez votre expérience" },
 ];
