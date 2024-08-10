@@ -63,7 +63,6 @@ export default class Application {
             this.startComputer();
             window.parent.postMessage('startPlaneClicked', '*');
         }, 3000000);
-        // this.startComputer();
     }
 
     startComputer() {
@@ -111,7 +110,6 @@ export default class Application {
             scanline.remove();
         }, 1500);
     }
-
 
     notifyParent() {
         window.parent.postMessage('stopPlaneClicked', '*');

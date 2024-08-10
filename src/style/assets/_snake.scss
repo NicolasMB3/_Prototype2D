@@ -1,7 +1,9 @@
+@import 'variables';
+
 .snake {
   width: 100%;
-  height: 100%;
-  border: 1px solid #ffffff;
+  height: calc(100% - 31px);
+  border: $border-solid-white;
 }
 
 .main-menu {
@@ -10,35 +12,38 @@
   align-items: center;
   flex-direction: column;
   overflow: hidden;
-  gap: .6rem;
+  gap: $btn-gap;
 
   h3 {
-    font-family: 'Perfect DOS VGA 437 Win', 'Tahoma', sans-serif;
+    font-family: $font-family-perfect;
     font-weight: 400;
     font-style: normal;
-    color: #171717;
+    color: $black;
     font-size: 60px;
   }
 
   button {
-    border-right: 2px solid #C0C0C0;
-    border-bottom: 1px solid #C0C0C0;
-    border-top: 2px solid #DFDFDF;
-    border-left: 1px solid #DFDFDF;
-    box-shadow: inset 2px 2px 0px #FFFFFF, inset -2px -2px 0px #667378;
+    border-right: 2px solid $grey-dark;
+    border-bottom: 1px solid $grey-dark;
+    border-top: 2px solid $grey-light;
+    border-left: 1px solid $grey-light;
+    box-shadow: inset 2px 2px 0 $white, inset -2px -2px 0px $shadow-grey;
     padding: .8rem;
     width: 200px;
     cursor: pointer;
-    color: #191919;
+    color: $black;
+
     &:hover {
-      color: white;
-      background-color: #a2a4a6;
+      color: $white;
+      background-color: $grey-dark;
     }
   }
 }
 
-.color-container, .pause-container {
+.color-container,
+.pause-container {
   margin-top: 2rem;
+  gap: 0.5rem;
   display: flex;
   flex-direction: column;
 

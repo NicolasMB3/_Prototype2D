@@ -1,22 +1,27 @@
+@import 'variables';
+
 .context-menu {
   position: absolute;
-  z-index: 15000;
+  z-index: $z-index-context-menu;
   display: flex;
   flex-direction: column;
-  width: 200px;
-  background-color: white;
+  width: $context-menu-width;
+  background-color: $white;
   border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(0, 0, 0, 0.4);
+  box-shadow: $box-shadow-context;
+  border: $border-context;
+
   button {
     background-color: transparent;
     border: none;
     text-align: left;
-    padding: .5rem 1rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    padding: $padding-context-button;
+    border-bottom: $border-context;
+
     &:hover {
-      background-color: rgba(0, 0, 0, 0.1);
+      background-color: $context-menu-hover;
     }
+
     &:last-child {
       border-bottom: none;
     }

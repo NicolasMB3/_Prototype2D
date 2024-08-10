@@ -1,0 +1,58 @@
+// Colors
+$black: #000000;
+$white: #FFFFFF;
+$grey-dark: #808080;
+$grey-light: #DFDFDF;
+$shadow-grey: #667378;
+$background-grey: #B8C0C1;
+$folder-hover-bg: #000A71;
+$border-transparent: transparent;
+$border-context: rgba(0, 0, 0, 0.4);
+$context-menu-hover: rgba(0, 0, 0, 0.1);
+
+// Fonts
+$font-family-perfect: 'Perfect DOS VGA 437 Win', 'Tahoma', sans-serif;
+$font-family-ms-sans: 'MS Sans Serif', sans-serif;
+$font-family-ms-sans-bold: 'MS Sans Serif Bold';
+$font-size-desktop-folder: 14px;
+$font-size-button: 12px;
+$line-height-button: 15px;
+
+// Borders
+$border-solid-white: 1px solid $white;
+$border-solid-black: 1px solid $black;
+$border-solid-grey-light: 1px solid $grey-light;
+$border-solid-grey-dark: 1px solid $grey-dark;
+$border-dashed-white: 1px dashed $white;
+$border-dashed-transparent: 1px dashed $border-transparent;
+$border-context: 1px solid $border-context;
+
+// Box shadows
+$box-shadow-inset-white: inset 1px 1px 0 $white;
+$box-shadow-inset-grey: inset -1px -1px 0 $shadow-grey;
+$box-shadow-context: 0 0 10px rgba(0, 0, 0, 0.1);
+
+// Sizes
+$windows-width: 700px;
+$windows-height: 400px;
+$btn-height: 28px;
+$btn-padding: 0 6px;
+$btn-gap: 0.3rem;
+$btn-width-fit: fit-content;
+$desktop-folder-img-size: 50px;
+$desktop-folder-width: 95px;
+$desktop-folder-padding: 10px;
+$folder-preview-width: 95px;
+$folder-preview-height: 91px;
+$context-menu-width: 200px;
+$desktop-folder-margin-top: 5px;
+$padding-context-button: .5rem 1rem;
+$padding-desktop-folder-div: 2px 4px;
+$padding-desktop-folder: 10px;
+
+// Z-index
+$z-index-context-menu: 15000;
+
+// Gradiant
+$gradiant-windows95: linear-gradient(to right, #000080, #002c9a, #004ab0, #0067c1, #1084d0);
+$gradiant-windows95-inactive: linear-gradient(to right, #808080, #808080, #808080, #808080, #808080);

@@ -210,7 +210,7 @@ export class Snake {
         this.pauseOverlay.style.alignItems = 'center';
         this.pauseOverlay.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
         this.pauseOverlay.style.backdropFilter = 'blur(8px)';
-        this.pauseOverlay.innerHTML = '<img class="pause" src="./pause.svg" alt="Pause">';
+        this.pauseOverlay.innerHTML = '<img class="pause" src="./images/pause.svg" alt="Pause">';
     }
 
     drawScore() {

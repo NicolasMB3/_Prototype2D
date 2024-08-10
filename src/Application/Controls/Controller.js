@@ -83,9 +83,10 @@ export class WindowController {
     minimizeWindow(windowElement, icon) {
         windowElement.classList.add('minimized');
 
-        setTimeout(() => {
+        windowElement.addEventListener('animationend', () => {
             windowElement.style.display = 'none';
-        }, 500);
+            windowElement.classList.remove('minimized');
+        }, { once: true });
 
         const dock = document.querySelector('.dock_content');
         let iconID = dock.querySelector(`.active_dock[data-icon="${icon}"]`);
@@ -146,8 +147,12 @@ export class WindowController {
     }
 
     restoreWindow(windowElement, iconID) {
-        windowElement.classList.remove('minimized');
         windowElement.style.display = 'block';
+        windowElement.classList.add('restored');
+
+        windowElement.addEventListener('animationend', () => {
+            windowElement.classList.remove('restored');
+        }, { once: true });
 
         const windowIDs = JSON.parse(iconID.dataset.windows || '[]');
         iconID.dataset.windows = JSON.stringify(windowIDs.filter(id => id !== windowElement.id));

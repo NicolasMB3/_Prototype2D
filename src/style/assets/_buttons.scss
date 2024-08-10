@@ -1,7 +1,9 @@
+@import 'variables';
+
 .w-95-btn {
   background: #B8C0C1;
   cursor: pointer;
-  font-family: 'MS Sans Serif Bold';
+  font-family: $font-family-ms-sans-bold;
   font-weight: bold;
   font-style: normal;
   font-size: 12px;
@@ -16,22 +18,20 @@
   line-height: 15px;
   color: black;
 
-  border-right: 1px solid black;
-  border-bottom: 1px solid black;
-  border-top: 1px solid #DFDFDF;
-  border-left: 1px solid #DFDFDF;
+  border-right: $border-solid-black;
+  border-bottom: $border-solid-black;
+  border-top: $border-solid-grey-light;
+  border-left: $border-solid-grey-light;
 
-  box-shadow: inset 1px 1px 0px #FFFFFF,
-  inset -1px -1px 0px #667378;
+  box-shadow: $box-shadow-inset-white;
 
   &:hover {
-    border-right: 1px solid #DFDFDF;
-    border-bottom: 1px solid #DFDFDF;
-    border-top: 1px solid black;
-    border-left: 1px solid black;
+    border-right: $border-solid-grey-light;
+    border-bottom: $border-solid-grey-light;
+    border-top: $border-solid-black;
+    border-left: $border-solid-black;
 
-    box-shadow: inset 1px 1px 0px #667378,
-    inset -1px -1px 0px #FFFFFF;
+    box-shadow: $box-shadow-inset-grey;
   }
 
   &_c {

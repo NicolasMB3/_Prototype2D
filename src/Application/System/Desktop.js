@@ -1,6 +1,5 @@
 import { Snake } from "../Games/Snake.js";
 import { Doom } from "../Games/Doom.js";
-import { hierarchy } from "../Controls/Hierarchy.js";
 import { Pacman } from "../Games/Pacman.js";
 
 export class Desktop {
@@ -21,7 +20,6 @@ export class Desktop {
         this.windowsArea = document.querySelector('.windows_area');
         this.navigation = document.querySelector('.navigation');
         this.grid = this.createGrid();
-        this.hierarchy = new hierarchy(this);
         this.snakeGameCounter = 0;
         this.doomGameCounter = 0;
         this.pacmanGameCounter = 0;
@@ -36,7 +34,6 @@ export class Desktop {
         });
         this.windowsArea.addEventListener('mousemove', (e) => this.updateSelection(e));
         this.windowsArea.addEventListener('mouseup', (e) => this.endSelection(e));
-        document.addEventListener('keydown', (e) => this.handleKeyDown(e));
 
         this.launchSnakeOnWindowOpen();
         this.setupDragAndDrop();
@@ -47,18 +44,8 @@ export class Desktop {
         this.setFolderPosition(folderElement);
         this.addDragEvents(folderElement, folderName);
         this.content[folderName] = contentFunction;
-        if (folderName === 'Poubelle') {
-            this.addDoubleClickEventTrash(folderElement, folderName, contentFunction, icon, texDesc1, texDesc2);
-            this.addContextMenuEvent(folderElement);
-            folderElement.addEventListener('drop', (e) => this.hierarchy.onTrashDrop(e));
-            document.addEventListener('trashUpdated', () => {
-                this.hierarchy.updateTrashWindowContent();
-            });
-        } else {
-            this.addDoubleClickEvent(folderElement, folderName, contentFunction, icon, texDesc1, texDesc2);
-        }
+        this.addDoubleClickEvent(folderElement, folderName, contentFunction, icon, texDesc1, texDesc2);
         document.querySelector('.windows_area').appendChild(folderElement);
-        this.hierarchy.moveToTrash(folderElement);
     }
 
     createFolderElement(folderName, icon, type) {
@@ -120,18 +107,14 @@ export class Desktop {
         });
     }
 
-    addDoubleClickEventTrash(folderElement, folderName, content, icon, textDesc1, textDesc2) {
-        folderElement.addEventListener('dblclick', () => {
-            const trashContent = this.hierarchy.trash.map(folder => {
-                const folderElement = this.createFolderElement(folder.dataset.name, folder.querySelector('img').src);
-                return folderElement.outerHTML;
-            }).join('');
-            const trashWindow = this.windows.createNewWindow("center", icon, folderName, trashContent, textDesc1, textDesc2);
-            this.hierarchy.trash.forEach((folder, index) => {
-                const folderElementInWindow = trashWindow.querySelector(`.desktop-folder:nth-child(${index + 1})`);
-                this.hierarchy.addRestoreEvent(folderElementInWindow);
-            });
-        });
+    isOverlapping(folder1, folder2) {
+        const rect1 = folder1.getBoundingClientRect();
+        const rect2 = folder2.getBoundingClientRect();
+
+        return !(rect1.right < rect2.left ||
+            rect1.left > rect2.right ||
+            rect1.bottom < rect2.top ||
+            rect1.top > rect2.bottom);
     }
 
     setLocalStorageKeys() {
@@ -155,18 +138,6 @@ export class Desktop {
         const numGridsY = Math.floor(maxY / (this.gridSize + this.gap));
 
         return Array(numGridsX).fill(undefined).map(() => Array(numGridsY).fill(0));
-    }
-
-    handleKeyDown(e) {
-        if (e.key === 'Delete') {
-            this.hierarchy.moveSelectedFoldersToTrash();
-        }
-    }
-
-    addContextMenuEvent(element) {
-        element.addEventListener('contextmenu', (e) => {
-            this.createContextMenu(e, element);
-        });
     }
 
     updateGrid(folderElement) {
@@ -276,62 +247,6 @@ export class Desktop {
         }
     }
 
-    createContextMenu(e, folderElement) {
-        e.preventDefault();
-
-        this.removeExistingContextMenu();
-
-        const contextMenu = this.createContextMenuElement(e);
-
-        if (folderElement.dataset.name === 'Poubelle') {
-            this.addTrashOptions(contextMenu);
-        } else {
-            this.addDefaultOptions(contextMenu);
-        }
-
-        document.body.appendChild(contextMenu);
-        this.addRemoveContextMenuEvent(contextMenu);
-
-        return contextMenu;
-    }
-
-    removeExistingContextMenu() {
-        const existingMenu = document.querySelector('.context-menu');
-        if (existingMenu) {
-            existingMenu.remove();
-        }
-    }
-
-    createContextMenuElement(e) {
-        const contextMenu = document.createElement('div');
-        contextMenu.style.position = 'absolute';
-        contextMenu.style.left = `${e.pageX}px`;
-        contextMenu.style.top = `${e.pageY}px`;
-        contextMenu.classList.add('context-menu');
-        return contextMenu;
-    }
-
-    addTrashOptions(contextMenu) {
-        contextMenu.innerHTML = '<button class="empty-trash">Vider la corbeille</button>';
-        contextMenu.querySelector('.empty-trash').addEventListener('click', () => {
-            this.hierarchy.emptyBin();
-            contextMenu.remove();
-        });
-    }
-
-    addDefaultOptions(contextMenu) {
-        contextMenu.innerHTML = '<button class="delete">Supprimer</button><button class="restore">Restaurer</button>';
-    }
-
-    addRemoveContextMenuEvent(contextMenu) {
-        document.addEventListener('mousedown', function removeContextMenu(event) {
-            if (!event.target.closest('.context-menu')) {
-                contextMenu.remove();
-                document.removeEventListener('mousedown', removeContextMenu);
-            }
-        });
-    }
-
     setFolderPosition(folderElement) {
         let freePosition = this.findFreePosition();
         while (freePosition && this.grid[freePosition[0]][freePosition[1]] !== 0) {
@@ -425,7 +340,6 @@ export class Desktop {
         this.handleDragStart(folderElement, folderName);
         this.handleDragOver(folderElement);
         this.handleDragLeave(folderElement);
-        this.handleDrop(folderElement, folderName);
         this.handleDragEnd(folderElement);
     }
 
@@ -472,33 +386,17 @@ export class Desktop {
         });
     }
 
-    handleDrop(folderElement, folderName) {
-        folderElement.addEventListener('drop', (e) => {
-            e.preventDefault();
-            const childFolderName = e.dataTransfer.getData('text/plain');
-            const childFolderElement = document.querySelector(`.desktop-folder[data-name="${childFolderName}"]`);
-
-            if (folderName === childFolderName) {
-                folderElement.classList.remove('over');
-                return;
-            }
-
-            if ((folderElement.dataset.type === 'folder' || folderElement.dataset.type === 'game') && (childFolderElement.dataset.type !== 'system' || childFolderName === 'Snake')) {
-                folderElement.childrenFolders[childFolderName] = childFolderElement;
-                childFolderElement.style.display = 'none';
-            }
-            folderElement.classList.remove('over');
-        });
-    }
-
     handleDragEnd(folderElement) {
         folderElement.addEventListener('dragend', () => {
             folderElement.classList.remove('dragging');
             this.updateGrid(folderElement);
+
             if (this.previewElement) {
                 this.previewElement.remove();
                 this.previewElement = null;
             }
+
+            this.preventIconOverlap(folderElement);
         });
     }
 
@@ -568,24 +466,38 @@ export class Desktop {
                 this.selectedFolders.forEach(folder => {
                     const folderRect = folder.getBoundingClientRect();
                     const desktopAreaRect = desktopArea.getBoundingClientRect();
-                    if (folderRect.left < desktopAreaRect.left || folderRect.right > desktopAreaRect.right || folderRect.top < desktopAreaRect.top || folderRect.bottom > desktopAreaRect.bottom) {
+
+                    if (folderRect.left < desktopAreaRect.left ||
+                        folderRect.right > desktopAreaRect.right ||
+                        folderRect.top < desktopAreaRect.top ||
+                        folderRect.bottom > desktopAreaRect.bottom) {
                         this.setFolderToFreePosition(folder, desktopAreaRect);
                     } else {
-                        // Check if the grid position is already occupied
-                        const gridX = Math.floor(folderRect.left / (this.gridSize + this.gap));
-                        const gridY = Math.floor((folderRect.top - document.querySelector('.navigation').offsetHeight) / (this.gridSize + this.gap));
-                        if (this.grid[gridX][gridY] !== 0) {
-                            this.setFolderToFreePosition(folder, desktopAreaRect);
-                        }
+                        this.preventIconOverlap(folder);
                     }
+
                     this.updateGrid(folder);
                 });
-                this.draggedFolderName = null;
+
+                // Clean
                 if (this.previewElement) {
                     this.previewElement.remove();
                     this.previewElement = null;
                 }
-                this.draggedFolder = null;
+
+                this.draggedFolderName = null;
+                this.selectedFolders = [];
+            }
+        });
+    }
+
+    preventIconOverlap(folderElement) {
+        const desktopArea = document.querySelector('.windows_area');
+        const folders = desktopArea.querySelectorAll('.desktop-folder');
+
+        folders.forEach(otherFolder => {
+            if (folderElement !== otherFolder && this.isOverlapping(folderElement, otherFolder)) {
+                this.setFolderToFreePosition(folderElement, desktopArea.getBoundingClientRect());
             }
         });
     }
@@ -683,5 +595,4 @@ export class Desktop {
         document.body.removeChild(this.selectionBox);
         this.selectionBox = null;
     }
-
 }

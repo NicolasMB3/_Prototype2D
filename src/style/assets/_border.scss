@@ -1,16 +1,18 @@
-.w-95-border {
-  border-right: 1px solid black;
-  border-bottom: 1px solid black;
-  border-top: 1px solid #DFDFDF;
-  border-left: 1px solid #DFDFDF;
+@import 'variables';
 
-  box-shadow: inset 1px 1px 0 #FFFFFF,
-  inset -1px -1px 0px #667378;
+.w-95-border {
+  border-right: $border-solid-black;
+  border-bottom: $border-solid-black;
+  border-top: $border-solid-grey-light;
+  border-left: $border-solid-grey-light;
+
+  box-shadow: $box-shadow-inset-white,
+  $box-shadow-inset-grey;
 }
 
 .w-95-l-border {
-  border-right: 1px solid #DFDFDF;
-  border-bottom: 1px solid #DFDFDF;
-  border-top: 1px solid #808080;
-  border-left: 1px solid #808080;
+  border-right: $border-solid-grey-light;
+  border-bottom: $border-solid-grey-light;
+  border-top: $border-solid-grey-dark;
+  border-left: $border-solid-grey-dark;
 }

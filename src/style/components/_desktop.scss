@@ -1,53 +1,55 @@
-.desktop-folder img {
-  width: 50px;
-  height: 50px;
-}
+@import '../assets/variables';
 
+/* Desktop Folder */
 .desktop-folder {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   cursor: pointer;
-  padding: 10px;
+  padding: $padding-desktop-folder;
   height: auto;
-  width: 95px;
-  border: 1px solid transparent;
-  font-family: 'MS Sans Serif', sans-serif;
-  font-size: 14px;
-  color: white;
-}
+  width: $desktop-folder-width;
+  border: $border-dashed-transparent;
+  font-family: $font-family-ms-sans;
+  font-size: $font-size-desktop-folder;
+  color: $white;
 
-.desktop-folder div {
-  padding: 2px 4px;
-  border: 1px dashed transparent;
-}
+  &:hover {
+    div {
+      border: $border-dashed-white;
+      color: $white;
+      background: $folder-hover-bg;
+    }
+  }
 
-.desktop-folder:hover {
+  img {
+    width: $desktop-folder-img-size;
+    height: $desktop-folder-img-size;
+  }
+
   div {
-    border: 1px dashed white;
-    color: white;
-    background: #000A71;
+    padding: $padding-desktop-folder-div;
+    border: $border-dashed-transparent;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-top: $desktop-folder-margin-top;
   }
 }
 
-.desktop-folder div {
-  text-align: center;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  margin-top: 5px;
-}
-
+/* Folder Preview */
 .folder-preview {
   position: absolute;
-  width: 95px;
-  height: 91px;
-  border: 1px dashed white;
+  width: $folder-preview-width;
+  height: $folder-preview-height;
+  border: $border-dashed-white;
   pointer-events: none;
   animation: jerkup 4s infinite;
 }
 
+/* Selected State */
 .selected {
-  border: 1px dashed white;
+  border: $border-dashed-white;
 }

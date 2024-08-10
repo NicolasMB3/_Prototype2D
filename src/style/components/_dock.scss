@@ -1,8 +1,11 @@
+@import '../assets/variables';
+
+/* Dock */
 .dock {
   position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   align-content: center;
   justify-content: center;
@@ -17,7 +20,7 @@
   display: flex;
   gap: 1rem;
   padding: 8px 10px !important;
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba($white, 0.4);
   backdrop-filter: blur(5px) brightness(0.85) contrast(90%) grayscale(35%) saturate(174%);
 
   div {
@@ -26,9 +29,12 @@
     padding: 4px;
 
     &:hover {
-      background-image: linear-gradient(45deg, white 25%, transparent 25%), linear-gradient(-45deg, white 25%, transparent 25%), linear-gradient(45deg, transparent 75%, white 75%), linear-gradient(-45deg, transparent 75%, white 75%);
+      background-image: linear-gradient(45deg, $white 25%, transparent 25%),
+      linear-gradient(-45deg, $white 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, $white 75%),
+      linear-gradient(-45deg, transparent 75%, $white 75%);
       background-size: 4px 4px;
-      background-position: 0px 0px, 0px 2px, 2px -2px, -2px 0px;
+      background-position: 0 0, 0 2px, 2px -2px, -2px 0px;
     }
   }
 }
@@ -41,6 +47,7 @@
 
 .active_dock {
   position: relative;
+
   &::after {
     content: '';
     position: absolute;
@@ -48,11 +55,12 @@
     left: calc(50% - 3.5px);
     width: 7px;
     height: 7px;
-    border-radius: 50px;
-    background: white;
+    border-radius: 50%;
+    background: $white;
   }
 }
 
+/* Window Menu */
 .window-menu {
   position: absolute;
   transform: translateY(-230px);
@@ -67,8 +75,9 @@
   height: 160px;
   padding: 10px;
   border-radius: 5px;
-  color: white;
-}
-.window-menu div {
-  cursor: pointer;
+  color: $white;
+
+  div {
+    cursor: pointer;
+  }
 }
