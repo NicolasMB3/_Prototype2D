@@ -53,19 +53,13 @@ export default class Application {
                 this.setupOffComputer();
             }
         }, false);
-        document.querySelector('#startW95').addEventListener('click', () => {
+        document.querySelector('#connexion').addEventListener('click', () => {
             this.startComputer();
         });
-        document.querySelector('#main-start').addEventListener('click', () => {
-            this.startComputer();
-        });
-        setTimeout(() => {
-            this.startComputer();
-            window.parent.postMessage('startPlaneClicked', '*');
-        }, 3000000);
     }
 
     startComputer() {
+        document.body.classList.add('fade-out');
         document.body.style.backgroundImage = 'linear-gradient(to right bottom, #008080, #007979, #007272, #006c6c, #006565)';
         this.startScreen.style.display = 'none';
         this.bootup.start();

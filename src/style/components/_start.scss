@@ -10,6 +10,53 @@
   background-image: linear-gradient(to right bottom, #008080, #007979, #007272, #006c6c, #006565);
   z-index: 8000;
   gap: 4rem;
+  color: white;
+  justify-content: center;
+
+  .start-header {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 1.2rem;
+
+    .start-title {
+      font-size: 20px;
+    }
+
+    .div-container {
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+
+    .btn-container {
+      display: flex;
+      width: 250px;
+      justify-content: flex-end;
+    }
+    
+    #connexion {
+      line-height: 4px;
+      font-size: 14px;
+      padding: 4px 10px;
+    }
+
+    .start-input {
+      width: 250px;
+      padding: 4px 10px;
+      color: black;
+      background-color: $white;
+      border-right: $border-solid-black;
+      border-bottom: $border-solid-black;
+      border-top: $border-solid-grey-light;
+      border-left: $border-solid-grey-light;
+
+      box-shadow: $box-shadow-inset-white,
+      $box-shadow-inset-grey;
+    }
+  }
 }
 
 /* Loading Screen */

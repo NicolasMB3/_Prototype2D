@@ -10,6 +10,7 @@ export class BootUP {
     }
 
     async showLoadingScreen() {
+
         const loadingMessages = [
             'Initialisation du système...\n',
             'Chargement des modules de base...\n',
@@ -38,6 +39,7 @@ export class BootUP {
         await this.typeMessages(loadingMessages, 5);
         await this.simulateDownload();
         await this.typeMessages(finalMessages, 5);
+        document.body.classList.remove('fade-out');
 
         setTimeout(() => {
             this.loadingScreen.style.display = 'none';
