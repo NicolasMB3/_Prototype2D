@@ -4,6 +4,7 @@ import { Desktop } from "./System/Desktop.js";
 import { Dock } from "./System/Dock.js";
 import { BootUP } from "./Controls/BootUP.js";
 import { Navigation } from "./System/Navigation.js";
+import { LoadingScreen } from "./Controls/LoadingScreen.js";
 
 export default class Application {
     constructor() {
@@ -92,7 +93,9 @@ export default class Application {
         scanline.classList.add('scanline');
         document.body.appendChild(scanline);
 
-        document.body.classList.add('turn-off-animation');
+        const loadingScreen = new LoadingScreen(22, "Loading one of the greatest games in history...");
+
+        // document.body.classList.add('turn-off-animation');
         new Audio('./sounds/off.mp3').play().then(r => r).catch(e => e);
 
         setTimeout(() => {

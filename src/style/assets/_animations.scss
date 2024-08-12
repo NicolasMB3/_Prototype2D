@@ -17,6 +17,21 @@
   animation: l6 1.4s infinite alternate;
 }
 
+.blinking-cursor {
+  font-family: "MS Sans Serif", sans-serif;
+  font-size: 14px;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  from, to {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
 @-webkit-keyframes slide-out-blurred-bottom {
   0% {
     -webkit-transform: translateY(0) scaleY(1) scaleX(1);

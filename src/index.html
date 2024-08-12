@@ -21,70 +21,71 @@
 </head>
 
 <body class="container">
-<div id="code-container" style="display:none;">
-  <div class="cursor"></div>
-</div>
-<!--  Start-->
-<div class="start">
-    <div class="start-header">
-        <img src="./images/user.png" alt="Logo Start">
-        <p class="start-title">Bienvenue Visiteur</p>
-        <div class="div-container">
-          <div class="start-input">NicolasB</div>
-          <div class="start-input">**********</div>
+  <div id="code-container" style="display:none;">
+    <span class="blinking-cursor">_</span>
+  </div>
+  <!--  Start-->
+  <div class="start">
+      <div class="start-header">
+          <img src="./images/user.png" alt="Logo Start">
+          <p class="start-title">Bienvenue sur <span class="bold">PrototypeOS</span></p>
+          <div class="div-container">
+            <div class="start-input">nicolasbaar@outlook.fr<span class="blinking-cursor">_</span></div>
+            <div class="start-input">**********</div>
+            <p class="password">Mot de passe oublié ?</p>
+          </div>
+          <div class="btn-container">
+            <button id="connexion" class="w-95-btn">Connexion</button>
+          </div>
+      </div>
+  </div>
+  <!-- Loading screen with computer text -->
+  <div class="loading-screen block_highlights">
+    <pre id="loading-text"></pre>
+  </div>
+  <!--  PrototypeOS -->
+  <div class="master">
+    <div class="navigation menu-demarrer w-95-border block_highlights">
+      <button class="w-95-btn start-btn">
+        <img src="./images/computer.png" alt="Logo Start"> Demarrer
+      </button>
+      <div class="start-menu w-95-border" style="display: none;">
+        <div class="start-menu-banner">
+          <span class="banner-text">PrototypeOS</span>
         </div>
-        <div class="btn-container">
-          <button id="connexion" class="w-95-btn">Connexion</button>
+        <ul class="start-menu-list">
+          <li class="cv-item"><img src="./images/book.png"/>CV
+            <ul class="submenu w-95-border">
+              <li><a href="./cv_nicolasbaar.pdf" download>Telecharger le CV</a></li>
+            </ul>
+          </li>
+          <hr>
+          <li id="turnOffButton"><img src="./images/standby.png"/>Arrêter</li>
+        </ul>
+      </div>
+      <div class="w-95-l-border ms-font controller-volume">
+        <img src="./images/volume.png" alt="Changer le volume" id="volume">
+        <p class="date-time"></p>
+      </div>
+      <div class="volume-controller w-95-border" style="display: none;">
+        <div class="volume-controller-header windows95-controller">
+          <p>Volume</p>
         </div>
+        <div class="volume-slider">
+          <input type="range" min="0" max="100" value="50" class="win95-range">
+        </div>
+        <div class="volume-footer windows95-footer">
+          <button class="w-95-btn">OK</button>
+        </div>
+      </div>
     </div>
-</div>
-<!-- Loading screen with computer text -->
-<div class="loading-screen block_highlights">
-  <pre id="loading-text"></pre>
-</div>
-<!--  PrototypeOS -->
-<div class="master">
-  <div class="navigation menu-demarrer w-95-border block_highlights">
-    <button class="w-95-btn start-btn">
-      <img src="./images/computer.png" alt="Logo Start"> Demarrer
-    </button>
-    <div class="start-menu w-95-border" style="display: none;">
-      <div class="start-menu-banner">
-        <span class="banner-text">PrototypeOS</span>
-      </div>
-      <ul class="start-menu-list">
-        <li class="cv-item"><img src="./images/book.png"/>CV
-          <ul class="submenu w-95-border">
-            <li><a href="./cv_nicolasbaar.pdf" download>Telecharger le CV</a></li>
-          </ul>
-        </li>
-        <hr>
-        <li id="turnOffButton"><img src="./images/standby.png"/>Arrêter</li>
-      </ul>
-    </div>
-    <div class="w-95-l-border ms-font controller-volume">
-      <img src="./images/volume.png" alt="Changer le volume" id="volume">
-      <p class="date-time"></p>
-    </div>
-    <div class="volume-controller w-95-border" style="display: none;">
-      <div class="volume-controller-header windows95-controller">
-        <p>Volume</p>
-      </div>
-      <div class="volume-slider">
-        <input type="range" min="0" max="100" value="50" class="win95-range">
-      </div>
-      <div class="volume-footer windows95-footer">
-        <button class="w-95-btn">OK</button>
-      </div>
+    <div class="windows_area"></div>
+    <div class="notification-center"></div>
+    <div class="dock block_highlights">
+      <div class="dock_content windows95-box w-95-border"></div>
     </div>
   </div>
-  <div class="windows_area"></div>
-  <div class="notification-center"></div>
-  <div class="dock block_highlights">
-    <div class="dock_content windows95-box w-95-border"></div>
-  </div>
-</div>
-<script type="module" src="index.js"></script>
+  <script type="module" src="index.js"></script>
 </body>
 
 </html>

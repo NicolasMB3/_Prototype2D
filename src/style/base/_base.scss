@@ -99,3 +99,57 @@ a, button, input[type="button"], input[type="submit"], .desktop-folder, .items_d
   font-size: 12px;
   color: gray;
 }
+
+#loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999999999999999999;
+  background-color: #000;
+  color: white;
+
+  .content {
+    padding: 20px;
+    text-align: center;
+    width: 400px;
+    margin: 0 auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .progress-bar {
+    text-align: center;
+    width: 100%;
+    height: 20px;
+    background: white;
+    display: flex;
+  }
+
+  .progress-segment {
+    width: 15px;
+    height: 100%;
+    background-color: #000080;
+    margin-right: 2px;
+    opacity: 0;
+  }
+
+  .progress-segment.visible {
+    opacity: 1;
+  }
+
+  .cancel-button {
+    margin-top: 10px;
+    padding: 2px 10px;
+    font-size: 14px;
+    background-color: #C0C0C0;
+    border: 2px solid #000;
+    cursor: pointer;
+  }
+
+  .cancel-button:active {
+    box-shadow: inset 2px 2px #888;
+  }
+}
