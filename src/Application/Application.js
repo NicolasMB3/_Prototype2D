@@ -5,6 +5,7 @@ import { Dock } from "./System/Dock.js";
 import { BootUP } from "./Controls/BootUP.js";
 import { Navigation } from "./System/Navigation.js";
 import { LoadingScreen } from "./Controls/LoadingScreen.js";
+import { DVDLogoScreensaver } from "./Controls/ScreenSaver.js";
 
 export default class Application {
     constructor() {
@@ -49,9 +50,13 @@ export default class Application {
     setupMessageListener() {
         window.addEventListener('message', (event) => {
             if (event.data === 'startPlaneClicked') {
-                this.startComputer();
+                const screensaver = new DVDLogoScreensaver();
+                screensaver.show();
+                console.log('start');
             } else if (event.data === 'stopPlaneClicked') {
-                this.setupOffComputer();
+                const screensaver = new DVDLogoScreensaver();
+                console.log('stop');
+                screensaver.hide();
             }
         }, false);
         document.querySelector('#connexion').addEventListener('click', () => {
@@ -69,7 +74,6 @@ export default class Application {
     setupTurnOffButton() {
         this.turnOffButton.addEventListener('click', () => {
             this.setupOffComputer();
-            this.notifyParent();
         });
     }
 
@@ -106,10 +110,6 @@ export default class Application {
             this.resetLoadingScreen();
             scanline.remove();
         }, 1500);
-    }
-
-    notifyParent() {
-        window.parent.postMessage('stopPlaneClicked', '*');
     }
 
     resetLoadingScreen() {
