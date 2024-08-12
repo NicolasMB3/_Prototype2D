@@ -46,6 +46,11 @@ export class BootUP {
             this.container.style.display = 'block';
             this.container.classList.add('fade-out');
             this.removeFadeOutClassAfterDelay();
+            setTimeout(() => {
+                const welcome = new Audio('./sounds/welcome.mp3');
+                welcome.volume = 0.07;
+                welcome.play();
+            }, 500);
         }, 500);
     }
 

@@ -1,20 +1,20 @@
 export class DVDLogoScreensaver {
-    static instance = null; // Variable statique pour conserver l'unique instance
+    static instance = null;
 
     constructor() {
         if (DVDLogoScreensaver.instance) {
             return DVDLogoScreensaver.instance;
         }
 
-        this.logoWidth = 250;       // Largeur du logo
-        this.logoHeight = 160;      // Hauteur du logo
-        this.vx = 1.4;              // Vitesse en x
-        this.vy = 1.4;              // Vitesse en y
+        this.logoWidth = 250;
+        this.logoHeight = 160;
+        this.vx = 1.4;
+        this.vy = 1.4;
         this.logo = null;
         this.screensaver = null;
         this.animationFrame = null;
 
-        DVDLogoScreensaver.instance = this; // Sauvegarder l'instance dans la variable statique
+        DVDLogoScreensaver.instance = this;
     }
 
     createScreensaver() {
@@ -49,7 +49,6 @@ export class DVDLogoScreensaver {
     }
 
     moveLogo() {
-
         if (this.animationFrame) {
             cancelAnimationFrame(this.animationFrame);
         }
@@ -74,20 +73,39 @@ export class DVDLogoScreensaver {
         animate();
     }
 
+    applyFadeOut() {
+        document.body.classList.add('fade-out');
+        setTimeout(() => {
+            document.body.classList.remove('fade-out');
+        }, 2500);
+    }
+
+    applyFadeIn() {
+        document.body.classList.add('fade-monitor');
+        setTimeout(() => {
+            document.body.classList.remove('fade-monitor');
+        }, 550);
+    }
+
     show() {
-        this.createScreensaver();
-        if (this.screensaver) {
-            this.screensaver.style.display = 'flex';
-            this.moveLogo();
-        }
+        this.applyFadeIn();
+        setTimeout(() => {
+            this.createScreensaver();
+            if (this.screensaver) {
+                this.applyFadeOut();
+            }
+        }, 550);
     }
 
     hide() {
-        if(this.screensaver) {
-            this.screensaver.remove();
-            cancelAnimationFrame(this.animationFrame);
-            this.screensaver = null;
-            this.animationFrame = null;
+        this.applyFadeOut();
+        if (this.screensaver) {
+            setTimeout(() => {
+                this.screensaver.remove();
+                cancelAnimationFrame(this.animationFrame);
+                this.screensaver = null;
+                this.animationFrame = null;
+            }, 550);
         }
     }
 }

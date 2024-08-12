@@ -99,9 +99,6 @@ export default class Application {
 
         const loadingScreen = new LoadingScreen(22, "Loading one of the greatest games in history...");
 
-        // document.body.classList.add('turn-off-animation');
-        new Audio('./sounds/off.mp3').play().then(r => r).catch(e => e);
-
         setTimeout(() => {
             document.querySelectorAll('.crt-glitch').forEach(el => el.remove());
             document.body.classList.remove('fade-out');
